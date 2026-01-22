@@ -1,0 +1,34 @@
+#SingleInstance force
+
+~^s::{
+    Tooltip("reloading")
+    sleep(1000)
+    reload
+}
+
+!c:: {
+     ;FileDelete "C:\Users\A\Documents\monster slayer idle.txt"
+     ;oldpxc := ""
+     Loop{
+        Click 444,444
+        pxc := PixelGetColor(1222,180)
+        ;if pxc != oldpxc{
+        ;    FileAppend pxc . "`n", "C:\Users\A\Documents\monster slayer idle.txt"
+        ;}
+        ;oldpxc := pxc
+        if pxc = "0x069800"{
+            ;Msgbox("detected")
+            Click 1222,180
+        }
+    }Until GetKeyState("Space") = 1
+    ;Run "C:\Users\A\Documents\monster slayer idle.txt"
+} 
+
+!d::{
+    Loop{
+        MouseGetPos &xpos, &ypos
+        detect := PixelGetColor(1222,180)
+        Tooltip(detect . " " . PixelGetColor(xpos,ypos) . " " . xpos . " " . ypos)
+    }Until GetKeyState("Space") = 1
+    Tooltip() 
+}

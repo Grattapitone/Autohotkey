@@ -1,0 +1,27 @@
+#SingleInstance force
+
+if WinActive("Notepad"){
+    ~^s::{
+        Tooltip("reloading")
+        sleep(1000)
+        reload
+    }
+}
+
+#+n:: Run("notepad.exe")
+#n::{
+    if not Winexist("Notepad"){
+        Run("notepad.exe")
+    } else{
+        Winactivate("Notepad")
+    }
+}
+
+#+e:: Run("msedge.exe")
+#e::{
+    if not Winexist("Edge"){
+        Run("msedge.exe")
+    } else{
+        Winactivate("Edge")
+    }
+}
